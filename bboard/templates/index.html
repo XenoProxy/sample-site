@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Homepage</title>
+</head>
+<body>
+    <h1>Advertisements</h1>
+    { % for bb in bbs % }
+    <div>
+        <h2>{{ bb.title }}</h2>
+        <p>{{ bb.content }}</p>
+        <p>{{ bb.published|date:"d.m.Y H:i:s" }}</p> <!--Фильтр date преобразует значение published в указанный формат-->
+    </div>
+    { % endfor % }
+</body>
+</html>
