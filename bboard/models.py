@@ -4,6 +4,9 @@ from django.db import models
 class Rubric(models.Model):
     name = models.CharField(max_length=20, db_index=True, verbose_name='Name')
 
+    def __str__(self):  # Переопределение строкового представления класса
+        return self.name
+
     class Meta:
         verbose_name_plural = 'Rubrics'
         verbose_name = 'Rubric'
