@@ -6,11 +6,18 @@
     </head>
     <body>
         <h1>Advertisements</h1>
+        <div>
+            <a href="/bboard/">Homepage</a>
+            {% for rubric in rubrics %}
+            <a href="/bboard/{{ rubric.pk }}/">{{ rubric.name }}</a>
+            {% endfor %}
+        </div>
         {% for bb in bbs %}
         <div>
             <h2>{{ bb.title }}</h2>
             <p>{{ bb.content }}</p>
-            <p>{{ bb.published|date:"d.m.Y H:i:s" }}</p> <!--Фильтр date преобразует значение published в указанный формат-->
+            <p><a href="/bboard/{{ bb.rubric.pk }}"> {{ bb.rubric.name }}</a></p>
+            <p>{{ bb.published|date:"d.m.Y H:i:s" }}</p>
         </div>
         {% endfor %}
     </body>
