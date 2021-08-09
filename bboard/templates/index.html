@@ -8,6 +8,7 @@
         <h1>Advertisements</h1>
         <div>
             <a href="{% url 'index' %}">Homepage</a>
+            <a href="{% url 'add' %}">Add</a>
             {% for rubric in rubrics %}
             <a href="{% url 'by_rubric' rubric.pk %}"></a>
             {% endfor %}

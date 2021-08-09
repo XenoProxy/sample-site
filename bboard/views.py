@@ -1,6 +1,19 @@
 from django.shortcuts import render
+from django.views.generic.edit import CreateView
 
 from .models import Bd, Rubric
+from .forms import BdForm
+
+
+class BdCreateView(CreateView):
+    template_name = 'create.html'
+    form_class = BdForm
+    success_url = '/bboard/'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['rubrics'] = Rubric.objects.all()
+        return context
 
 
 def index(request):
