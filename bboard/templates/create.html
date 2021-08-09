@@ -1,23 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Add Advertisement</title>
-    </head>
-    <body>
-        <h1>Add Advertisement</h1>
-        <div>
-            <a href="{% url 'index' %}">Homepage</a>
-            {% for rubric in rubrics %}
-            <a href="{% url 'by_rubric' rubric.pk %}">{{ rubric.name }}</a>
-            {% endfor %}
-        </div>
-        <!--Без указания адреса, т.к. данные будут отправлены по тому же
-         адресу, с которого была загружена страница-->
-        <form method="post">
-            {% csrf_token %}
-            {{ form.as_p }} <!--Генерирует код элементов управления-->
-            <input type="submit" value="Add">
-        </form>
-    </body>
-</html>
+{% extends "layout/basic.html" %}
+
+{% block title %}Add Advertisement{% endblock %}
+{% block content %}
+<h2>Add Advertisement</h2>
+<!--Без указания адреса, т.к. данные будут отправлены по тому же
+ адресу, с которого была загружена страница-->
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }} <!--Генерирует код элементов управления-->
+    <input type="submit" value="Add">
+</form>
+{% endblock %}
